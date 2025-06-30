@@ -1,0 +1,36 @@
+# Configuration Coolify pour le projet Soléane Massage
+name: soleane-massage
+description: "Site web moderne pour l'institut Soléane - Massage & Sophrologie"
+
+# Configuration Docker
+build:
+  dockerfile: Dockerfile
+  context: .
+
+# Variables d'environnement
+environment:
+  NODE_ENV: production
+  PORT: 3002
+  HOSTNAME: 0.0.0.0
+
+# Configuration réseau
+network:
+  port: 3002
+  public: true
+
+# Health check
+healthcheck:
+  enabled: true
+  path: /api/health
+  interval: 30s
+  timeout: 10s
+  retries: 3
+
+# Domaine personnalisé (optionnel)
+domains:
+  - soleane-massage.example.com
+
+# Auto-deploy depuis la branche main
+deploy:
+  branch: main
+  auto_deploy: true
