@@ -82,7 +82,7 @@ const ServiceRecommendations = () => {
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-900 mb-6">
-              Besoin d'aide pour{' '}
+              Besoin d&apos;aide pour{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">
                 choisir ?
               </span>
@@ -163,7 +163,7 @@ const ServiceRecommendations = () => {
                 </h3>
                 <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto leading-relaxed">
                   Profitez de notre consultation gratuite de 30 minutes pour découvrir 
-                  l'approche Soléane et identifier ensemble le parcours bien-être qui vous correspond.
+                  l&apos;approche Soléane et identifier ensemble le parcours bien-être qui vous correspond.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">

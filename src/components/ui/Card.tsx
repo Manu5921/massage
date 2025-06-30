@@ -82,7 +82,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ...motionProps,
     };
 
-    const { children: _, ...finalMotionProps } = defaultMotionProps;
+    const { children: _children, ...finalMotionProps } = defaultMotionProps;
     
     return (
       <motion.div

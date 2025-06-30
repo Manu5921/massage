@@ -129,7 +129,7 @@ const ServiceGrid = () => {
     },
   };
 
-  const getGridClasses = (size: string, index: number) => {
+  const getGridClasses = (size: string) => {
     switch (size) {
       case 'large':
         return 'col-span-1 md:col-span-2 row-span-2';
@@ -179,11 +179,11 @@ const ServiceGrid = () => {
             className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-fr"
             variants={containerVariants}
           >
-            {services.map((service, index) => (
+            {services.map((service) => (
               <motion.div
                 key={service.id}
                 className={cn(
-                  getGridClasses(service.size, index),
+                  getGridClasses(service.size),
                   'group relative'
                 )}
                 variants={itemVariants}
@@ -289,7 +289,7 @@ const ServiceGrid = () => {
             <Card variant="glass" size="lg" className="max-w-2xl mx-auto">
               <CardContent className="text-center py-12">
                 <h3 className="text-2xl font-serif font-bold text-neutral-900 mb-4">
-                  Besoin d'un conseil personnalisé ?
+                  Besoin d&apos;un conseil personnalisé ?
                 </h3>
                 <p className="text-neutral-600 mb-8 leading-relaxed">
                   Nos thérapeutes sont à votre disposition pour vous orienter vers 
@@ -312,7 +312,7 @@ const ServiceGrid = () => {
                     asChild
                   >
                     <Link href="/institut">
-                      Découvrir l'institut
+                      Découvrir l&apos;institut
                     </Link>
                   </Button>
                 </div>

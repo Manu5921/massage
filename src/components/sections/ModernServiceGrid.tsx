@@ -165,7 +165,7 @@ const ModernServiceGrid = () => {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr mb-16"
             variants={containerVariants}
           >
-            {services.map((service, index) => (
+            {services.map((service) => (
               <motion.div
                 key={service.id}
                 className={cn(

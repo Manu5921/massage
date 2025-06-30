@@ -174,7 +174,7 @@ const HeroBanner = () => {
             variants={itemVariants}
             className="text-lg sm:text-xl lg:text-2xl text-neutral-600 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            Découvrez l'art du massage thérapeutique et de la sophrologie dans un écrin de paix. 
+            Découvrez l&apos;art du massage thérapeutique et de la sophrologie dans un écrin de paix. 
             Soléane vous invite à un voyage vers le bien-être authentique.
           </motion.p>
 

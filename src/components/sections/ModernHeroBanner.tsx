@@ -223,7 +223,6 @@ const ModernHeroBanner = () => {
               variant="glass"
               size="sm"
               hover={false}
-              motionProps={cardVariants}
               className="text-center"
             >
               <div className="flex flex-col items-center">
@@ -239,7 +238,6 @@ const ModernHeroBanner = () => {
               variant="glass"
               size="sm"
               hover={false}
-              motionProps={cardVariants}
               className="text-center"
             >
               <div className="flex flex-col items-center">
@@ -255,7 +253,6 @@ const ModernHeroBanner = () => {
               variant="glass"
               size="sm"
               hover={false}
-              motionProps={cardVariants}
               className="text-center"
             >
               <div className="flex flex-col items-center">
