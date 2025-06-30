@@ -4,24 +4,25 @@ import React from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { 
-  Sparkles, 
-  Heart, 
   Brain, 
+  Heart, 
+  Sparkles, 
   Flower, 
   ArrowRight,
   Clock,
-  Star
+  Star,
+  User
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { cn } from '@/lib/utils';
 
-const ServiceGrid = () => {
+const ModernServiceGrid = () => {
   const ref = React.useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
-  // Services data with unique themes
+  // Services data avec thèmes visuels uniques - SANS IMAGES
   const services = [
     {
       id: 'sophrologie',
@@ -33,35 +34,9 @@ const ServiceGrid = () => {
       icon: Brain,
       color: 'from-blue-500 to-indigo-600',
       bgGradient: 'from-blue-50 to-indigo-50',
-      size: 'large', // Prend 2 colonnes
+      accent: 'blue',
+      size: 'large',
       featured: true,
-      image: '/api/placeholder/600/400'
-    },
-    {
-      id: 'relaxant',
-      title: 'Rituels Relaxants',
-      subtitle: 'Détente absolue',
-      description: 'Massages doux aux huiles essentielles pour un lâcher-prise total.',
-      duration: '90 min',
-      price: '95€',
-      icon: Flower,
-      color: 'from-pink-500 to-rose-600',
-      bgGradient: 'from-pink-50 to-rose-50',
-      size: 'medium',
-      image: '/api/placeholder/400/300'
-    },
-    {
-      id: 'cranien',
-      title: 'Massages Crâniens',
-      subtitle: 'Libération des tensions',
-      description: 'Techniques spécialisées pour soulager stress et maux de tête.',
-      duration: '45 min',
-      price: '55€',
-      icon: Sparkles,
-      color: 'from-purple-500 to-violet-600',
-      bgGradient: 'from-purple-50 to-violet-50',
-      size: 'small',
-      image: '/api/placeholder/300/250'
     },
     {
       id: 'excellence',
@@ -73,22 +48,35 @@ const ServiceGrid = () => {
       icon: Heart,
       color: 'from-amber-500 to-orange-600',
       bgGradient: 'from-amber-50 to-orange-50',
+      accent: 'amber',
       size: 'large',
       featured: true,
-      image: '/api/placeholder/600/400'
     },
     {
-      id: 'gift',
-      title: 'Coffrets Cadeaux',
-      subtitle: 'Offrir le bien-être',
-      description: 'Cartes cadeaux et coffrets pour partager un moment de détente.',
-      duration: 'Variable',
-      price: 'Dès 50€',
-      icon: Sparkles,
-      color: 'from-emerald-500 to-teal-600',
-      bgGradient: 'from-emerald-50 to-teal-50',
+      id: 'relaxant',
+      title: 'Rituels Relaxants',
+      subtitle: 'Détente absolue',
+      description: 'Massages doux aux huiles essentielles pour un lâcher-prise total.',
+      duration: '90 min',
+      price: '95€',
+      icon: Flower,
+      color: 'from-pink-500 to-rose-600',
+      bgGradient: 'from-pink-50 to-rose-50',
+      accent: 'pink',
       size: 'medium',
-      image: '/api/placeholder/400/300'
+    },
+    {
+      id: 'cranien',
+      title: 'Massages Crâniens',
+      subtitle: 'Libération des tensions',
+      description: 'Techniques spécialisées pour soulager stress et maux de tête.',
+      duration: '45 min',
+      price: '55€',
+      icon: Sparkles,
+      color: 'from-purple-500 to-violet-600',
+      bgGradient: 'from-purple-50 to-violet-50',
+      accent: 'purple',
+      size: 'medium',
     },
     {
       id: 'consultation',
@@ -97,11 +85,11 @@ const ServiceGrid = () => {
       description: 'Évaluation de vos besoins pour un programme sur-mesure.',
       duration: '30 min',
       price: 'Gratuit',
-      icon: Heart,
-      color: 'from-slate-500 to-gray-600',
-      bgGradient: 'from-slate-50 to-gray-50',
-      size: 'small',
-      image: '/api/placeholder/300/250'
+      icon: User,
+      color: 'from-emerald-500 to-teal-600',
+      bgGradient: 'from-emerald-50 to-teal-50',
+      accent: 'emerald',
+      size: 'medium',
     }
   ];
 
@@ -129,13 +117,11 @@ const ServiceGrid = () => {
     },
   };
 
-  const getGridClasses = (size: string, index: number) => {
+  const getGridClasses = (size: string) => {
     switch (size) {
       case 'large':
         return 'col-span-1 md:col-span-2 row-span-2';
       case 'medium':
-        return 'col-span-1 row-span-1';
-      case 'small':
         return 'col-span-1 row-span-1';
       default:
         return 'col-span-1';
@@ -174,16 +160,16 @@ const ServiceGrid = () => {
             </p>
           </motion.div>
 
-          {/* Bento Grid */}
+          {/* Bento Grid Moderne */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-fr"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr mb-16"
             variants={containerVariants}
           >
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
                 className={cn(
-                  getGridClasses(service.size, index),
+                  getGridClasses(service.size),
                   'group relative'
                 )}
                 variants={itemVariants}
@@ -194,87 +180,119 @@ const ServiceGrid = () => {
                   variant="elevated"
                   size="lg"
                   className={cn(
-                    'h-full overflow-hidden border-none',
+                    'h-full overflow-hidden border-none relative',
                     `bg-gradient-to-br ${service.bgGradient}`,
-                    service.featured && 'ring-2 ring-primary-200'
+                    service.featured && 'ring-2 ring-primary-200 shadow-2xl'
                   )}
                 >
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-5">
-                    <div 
-                      className="w-full h-full"
-                      style={{
-                        backgroundImage: `radial-gradient(circle at 20% 80%, ${service.color.split(' ')[1].replace('to-', '')} 0%, transparent 50%),
-                                        radial-gradient(circle at 80% 20%, ${service.color.split(' ')[3]} 0%, transparent 50%)`
-                      }}
-                    />
+                  {/* Decorative Pattern */}
+                  <div className="absolute inset-0 opacity-[0.03]">
+                    <svg 
+                      className="w-full h-full" 
+                      viewBox="0 0 100 100" 
+                      fill="none"
+                    >
+                      <defs>
+                        <pattern 
+                          id={`pattern-${service.id}`} 
+                          x="0" 
+                          y="0" 
+                          width="20" 
+                          height="20" 
+                          patternUnits="userSpaceOnUse"
+                        >
+                          <circle cx="10" cy="10" r="1" fill="currentColor" />
+                        </pattern>
+                      </defs>
+                      <rect 
+                        width="100%" 
+                        height="100%" 
+                        fill={`url(#pattern-${service.id})`} 
+                        className={`text-${service.accent}-500`}
+                      />
+                    </svg>
                   </div>
 
                   {/* Featured Badge */}
                   {service.featured && (
                     <div className="absolute top-4 right-4 z-10">
-                      <div className="flex items-center px-2 py-1 bg-white/90 backdrop-blur-sm rounded-full border border-primary-200/50 shadow-sm">
+                      <div className="flex items-center px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full border border-primary-200/50 shadow-sm">
                         <Star className="w-3 h-3 text-accent-500 mr-1" />
                         <span className="text-xs font-medium text-neutral-700">Populaire</span>
                       </div>
                     </div>
                   )}
 
-                  <CardHeader className="relative z-10">
-                    {/* Icon */}
+                  <CardHeader className="relative z-10 pb-4">
+                    {/* Icon avec animation */}
                     <motion.div
                       className={cn(
-                        'w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg mb-4',
+                        'w-14 h-14 rounded-xl flex items-center justify-center text-white shadow-lg mb-4',
                         `bg-gradient-to-br ${service.color}`
                       )}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <service.icon className="w-6 h-6" />
+                      <service.icon className="w-7 h-7" />
                     </motion.div>
 
-                    {/* Title & Subtitle */}
-                    <CardTitle className="text-xl lg:text-2xl font-bold text-neutral-900 mb-2">
+                    {/* Titre et sous-titre */}
+                    <CardTitle className="text-xl lg:text-2xl font-bold text-neutral-900 mb-2 leading-tight">
                       {service.title}
                     </CardTitle>
                     
-                    <div className="text-sm font-medium text-neutral-600 mb-3">
+                    <div className="text-sm font-medium text-neutral-600 mb-4">
                       {service.subtitle}
                     </div>
 
-                    {/* Duration & Price */}
+                    {/* Durée et Prix */}
                     <div className="flex items-center justify-between text-sm text-neutral-600 mb-4">
                       <div className="flex items-center">
                         <Clock className="w-4 h-4 mr-1" />
                         {service.duration}
                       </div>
-                      <div className="font-bold text-primary-700">
+                      <div className="font-bold text-lg text-primary-700">
                         {service.price}
                       </div>
                     </div>
                   </CardHeader>
 
-                  <CardContent className="relative z-10">
+                  <CardContent className="relative z-10 pt-0">
                     {/* Description */}
-                    <p className="text-neutral-600 leading-relaxed mb-6">
+                    <p className="text-neutral-600 leading-relaxed mb-6 text-sm lg:text-base">
                       {service.description}
                     </p>
 
                     {/* CTA Button */}
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      rightIcon={<ArrowRight className="w-4 h-4" />}
-                      className="w-full group-hover:bg-white group-hover:shadow-md transition-all duration-200"
-                      asChild
-                    >
-                      <Link href={`/soins/${service.id}`}>
-                        En savoir plus
-                      </Link>
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        rightIcon={<ArrowRight className="w-4 h-4" />}
+                        className="flex-1 group-hover:bg-white group-hover:shadow-md transition-all duration-200"
+                        asChild
+                      >
+                        <Link href={`/soins/${service.id}`}>
+                          En savoir plus
+                        </Link>
+                      </Button>
+                      
+                      {service.price !== 'Gratuit' && (
+                        <Button
+                          variant="primary"
+                          size="sm"
+                          className="flex-1 bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600"
+                          asChild
+                        >
+                          <Link href="#contact">
+                            Réserver
+                          </Link>
+                        </Button>
+                      )}
+                    </div>
                   </CardContent>
 
-                  {/* Hover Effect Overlay */}
+                  {/* Hover Effect */}
                   <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </Card>
               </motion.div>
@@ -283,13 +301,13 @@ const ServiceGrid = () => {
 
           {/* Bottom CTA */}
           <motion.div 
-            className="text-center mt-16"
+            className="text-center"
             variants={itemVariants}
           >
             <Card variant="glass" size="lg" className="max-w-2xl mx-auto">
               <CardContent className="text-center py-12">
                 <h3 className="text-2xl font-serif font-bold text-neutral-900 mb-4">
-                  Besoin d'un conseil personnalisé ?
+                  Besoin d&apos;un conseil personnalisé ?
                 </h3>
                 <p className="text-neutral-600 mb-8 leading-relaxed">
                   Nos thérapeutes sont à votre disposition pour vous orienter vers 
@@ -312,7 +330,7 @@ const ServiceGrid = () => {
                     asChild
                   >
                     <Link href="/institut">
-                      Découvrir l'institut
+                      Découvrir l&apos;institut
                     </Link>
                   </Button>
                 </div>
@@ -325,4 +343,4 @@ const ServiceGrid = () => {
   );
 };
 
-export default ServiceGrid;
+export default ModernServiceGrid;

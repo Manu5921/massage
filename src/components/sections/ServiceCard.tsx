@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Clock, Euro } from 'lucide-react';
 import { Card, CardContent, CardFooter } from '@/components/ui/Card';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import { Service } from '@/types';
 

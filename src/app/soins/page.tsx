@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
-import Container from '@/components/ui/Container';
-import ServiceGrid from '@/components/sections/ServiceGrid';
-import { servicesWithImages } from '@/lib/data';
+import { Container } from '@/components/ui/Container';
+import ModernServiceGrid from '@/components/sections/ModernServiceGrid';
 
 export const metadata: Metadata = {
   title: 'Nos Soins - Soléane Institut',
@@ -41,11 +40,7 @@ export default function SoinsPage() {
       </section>
 
       {/* Services Grid */}
-      <ServiceGrid
-        services={servicesWithImages}
-        columns={2}
-        showFeatured={true}
-      />
+      <ModernServiceGrid />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary-500">

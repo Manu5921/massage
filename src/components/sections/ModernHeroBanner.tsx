@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
 
-const HeroBanner = () => {
+const ModernHeroBanner = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -148,7 +148,7 @@ const HeroBanner = () => {
             </span>
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Main Headline NOUVEAU CONTENU */}
           <motion.h1
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold text-neutral-900 mb-6 leading-tight"
@@ -169,12 +169,12 @@ const HeroBanner = () => {
             au cœur de Paris
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Subtitle NOUVEAU CONTENU */}
           <motion.p
             variants={itemVariants}
             className="text-lg sm:text-xl lg:text-2xl text-neutral-600 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            Découvrez l'art du massage thérapeutique et de la sophrologie dans un écrin de paix. 
+            Découvrez l&apos;art du massage thérapeutique et de la sophrologie dans un écrin de paix. 
             Soléane vous invite à un voyage vers le bien-être authentique.
           </motion.p>
 
@@ -206,8 +206,11 @@ const HeroBanner = () => {
                 whileHover: { scale: 1.05 },
                 whileTap: { scale: 0.95 },
               }}
+              asChild
             >
-              Découvrir nos soins
+              <Link href="/soins">
+                Découvrir nos soins
+              </Link>
             </Button>
           </motion.div>
 
@@ -220,10 +223,7 @@ const HeroBanner = () => {
               variant="glass"
               size="sm"
               hover={false}
-              motionProps={{
-                initial: cardVariants.hidden,
-                animate: cardVariants.visible
-              }}
+              motionProps={cardVariants}
               className="text-center"
             >
               <div className="flex flex-col items-center">
@@ -239,10 +239,7 @@ const HeroBanner = () => {
               variant="glass"
               size="sm"
               hover={false}
-              motionProps={{
-                initial: cardVariants.hidden,
-                animate: cardVariants.visible
-              }}
+              motionProps={cardVariants}
               className="text-center"
             >
               <div className="flex flex-col items-center">
@@ -258,10 +255,7 @@ const HeroBanner = () => {
               variant="glass"
               size="sm"
               hover={false}
-              motionProps={{
-                initial: cardVariants.hidden,
-                animate: cardVariants.visible
-              }}
+              motionProps={cardVariants}
               className="text-center"
             >
               <div className="flex flex-col items-center">
@@ -326,4 +320,4 @@ const HeroBanner = () => {
   );
 };
 
-export default HeroBanner;
+export default ModernHeroBanner;
